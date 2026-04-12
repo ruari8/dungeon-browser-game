@@ -7,12 +7,12 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: limegreen;
 }
 p {
     color: lightgray;
     margin: 7px;
-    font-size: 15px;
+    font-size: 30px;
 }
 b {
     color: #303030;
@@ -28,7 +28,7 @@ b {
 .hideMe {
     display:none;
 }
-/*New*/
+/*Start Screen CSS*/
 #myVideo {
     position: fixed;
     right: 0;
@@ -39,17 +39,14 @@ b {
 
 #startScreen {
     text-align: center;
-    font-family: monospace;
     color:rgb(83, 83, 83);
 }
 
 #title {
-    /*background-color: black;*/
     color: white;
     padding: 10px;
-    font-size: 1000%;
+    font-size: 2000%;
     font-weight: bold;
-    /*New*/
     margin: auto;
     width: 40%;
     position: relative;
@@ -58,10 +55,8 @@ b {
 }
 
 #button {
-    /*background-color: rgb(96, 85, 141);*/
     padding: 20px;
     margin: 20px;
-    /*New*/
     position: relative;
     transform: translate(18%, 30%);
     z-index: 1;
@@ -69,29 +64,21 @@ b {
 
 #startButton{
     padding: 5px;
-    font-size: 400%;
+    font-size: 800%;
     font-weight: bold;
     color: white;
     background-color: transparent;
-    /*background-color: #FFFEBD;
-    border: 4px #930C10 solid;
-    border-radius: 15px;*/
     cursor: pointer;
 }
 #startButton:hover {
     color: blue;
 }
-/*New*/
 #customizeButton{
     padding: 5px;
-    font-size: 400%;
+    font-size: 800%;
     font-weight: bold;
     color: white;
-    /*background-color: #FFFEBD;
-    border: 4px #930C10 solid;
-    border-radius: 15px;*/
     cursor: pointer;
-    /*New*/
     position: relative;
     transform: translate(0%, 40%);
     background-color: transparent;
@@ -99,17 +86,13 @@ b {
 #customizeButton:hover {
     color: blue;
 }
-/*New*/
+
 #accessibilityButton{
     padding: 5px;
-    font-size: 400%;
+    font-size: 800%;
     font-weight: bold;
     color: white;
-    /*background-color: #FFFEBD;
-    border: 4px #930C10 solid;
-    border-radius: 15px;*/
     cursor: pointer;
-    /*New*/
     position: relative;
     transform: translate(0%, 80%);
     background-color: transparent;
@@ -118,6 +101,31 @@ b {
     color: blue;
 }
 
+/*Accessibility Screen CSS*/
+#accessibilityScreen {
+    text-align: center;
+    color:rgb(83, 83, 83);
+    clear: both;
+    overflow: auto;
+}
+.row {
+    clear: both;
+    overflow: auto;
+}
+.col1,
+.col2 {
+    width: 48%;
+    overflow: auto;
+    float: left;
+    border-radius: 10px;
+    border: 5px solid #930C10;
+    background-color: #FFFEBD;
+    font-size: 60px;
+    padding: 20px;
+    margin: 1%;
+}
+
+/*Avatar Details Screen CSS*/
 #avatarDetails {
     text-align: center;
     font-family: monospace;
@@ -128,17 +136,21 @@ b {
     /*background-color: black;*/
     color: white;
     padding: 10px;
-    font-size: 500%;
+    font-size: 1000%;
     font-weight: bold;
 
     /*New*/
     margin: auto;
 }
 
+#GameOverText {
+    font-size: 200%;
+}
+
 #characterSelect {
     border: 5px solid #930C10;
     background-color: #FFFEBD;
-    font-size: 30px;
+    font-size: 60px;
     margin: auto;
     padding: 20px;
     /*New*/
@@ -151,7 +163,7 @@ input[type=text] {
     padding: 10px;
     margin: 10px;
     width: 40%;
-    font-size: 16px;
+    font-size: 32px;
     font-family: monospace;
 }
 input[type=text]:focus {
@@ -171,7 +183,7 @@ input[type=text]:focus {
     padding: 10px 20px;
     margin: 10px;
     /*font-family: sans-serif, Arial;*/
-    font-size: 16px;
+    font-size: 32px;
     
 }
 .radio label:hover {
@@ -188,7 +200,7 @@ select {
     padding: 10px;
     margin: 10px;
     width: 20%;
-    font-size: 16px;
+    font-size: 32px;
     font-family: monospace;
 }
 select:focus {
@@ -202,7 +214,7 @@ select:focus {
 
 #begin {
     padding: 5px;
-    font-size: 250%;
+    font-size: 500%;
     font-weight: bold;
     background-color: #FFFEBD;
     color: rgb(83, 83, 83);
@@ -225,7 +237,7 @@ select:focus {
 #timer{
     background-color: #FFFEBD;
     font-family: monospace;
-    font-size: large;
+    font-size: 36px;
     font-weight: bold;
     display: inline-block;
     border-radius: 30px;
@@ -239,7 +251,7 @@ select:focus {
     box-shadow: 0px 5px;                
     height:125px;
     width: 610px;
-    font-size: 20px;
+    font-size: 40px;
     padding: 10px;
     margin: auto;
     /* position:absolute;
@@ -282,6 +294,43 @@ select:focus {
     top:30px;                               
     left:50%;
     transform:translate(-145%); */
+}
+
+#statCard {
+    border: 2px solid #930C10;
+    border-radius: 10px;
+    background-color: rgba(204, 204, 204, 0.541);
+    width: 50%;
+    margin: 10px auto;
+}
+
+#statCard th {
+    text-align: center;
+}
+
+#statCard td {
+    text-align: left;
+    font-size: 180%;
+}
+
+
+#statCard tr:nth-child(even) {
+    background: rgba(204, 204, 204, 0.541)
+}
+#statCard tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.541)
+}
+
+
+#statCard tr:hover{
+    background-color: #fa00001f;
+}
+
+.lifeHeart{
+    width:40px; 
+    height:40px; 
+    display: inline-flex;
+    margin:5px;
 }
 
 #up, #down, #right, #left{

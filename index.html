@@ -3,14 +3,25 @@
 
 <head>
     <title>Group project</title>
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="buttons.js"></script>
-    <script src="ruari.js"></script>
-    <script src="exampleChallenge.js"></script>
-    <script src="james.js"></script>
-    <script src="ogilby.js"></script>
+    <!-- Scripts -->
+    <script src="Javascript/jquery-3.6.0.min.js"></script>
+    <script src="Javascript/buttons.js"></script>
+    <script src="Javascript/ruari.js"></script>
+    <script src="Javascript/exampleChallenge.js"></script>
+    <script src="Javascript/james.js"></script>
+    <script src="Javascript/ogilby.js"></script>
+    <script src="Javascript/pressurePlateChal.js"></script>
+    <script src="Javascript/spiderEncounter-james.js"></script>
+    <script src="Javascript/prologue.js"></script>
+    <script src="Javascript/riddle_challenge.js"></script>
+    <script src="Javascript/roomChallenge.js"></script>
+
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="CSS/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/mazeStyle-RC.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/tooltips.css" />
 </head>
 
 <body>
@@ -33,35 +44,21 @@
         </div>
     </div>
 
-    <!-- Declare Avatar Details Screen -->
-
-    <div id="avatarDetails" class="hideMe">
-        <div id="avatarTitle">
-            Avatar Details
+    <!-- Customise Screen -->
+    <div id="customise" class="hideMe">
+        <div id="customiseCharacterTitle">
+            Character Selector
         </div>
         <div id="characterSelect">
-            <!-- Choose Name -->
-            <label for="characterName"><u>Character Name</u></label><br>
-            <input type="text" name="characterName" id="characterName">
-            <br><br>
 
-            <!-- Choose Gender -->
-            <u>Gender</u><br>
-            <div class="radio">
-                <input type="radio" name="gender" id="male" value="Male">
-                <label for="male">Male</label>
+            <!-- Set Character Colour -->
+            <label for="spriteColour"><u>            Character Colour            </u></label><br>
+            <select name="sprite" id="spriteColour" onchange="changeSprite();">
+                <option value="white">White</option>
+                <option value="lightcoral">Light coral</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
 
-                <input type="radio" name="gender" id="female" value="Female">
-                <label for="female">Female</label>
-                <br><br>
-            </div>
-
-            <!-- Set Difficulty -->
-            <label for="difficulty"><u>Maze Difficulty</u></label><br>
-            <select name="difficulty" id="difficulty">
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
             </select>
             <br><br>
 
@@ -72,6 +69,79 @@
                 <option value="rgb(96, 85, 141)">Original</option>
             </select>
             <br><br>
+
+        </div>
+
+        <button id="return" onclick="returnToMenu()">Return</button>
+        <br><br>
+
+    </div>
+
+    <!-- Accessibility Screen -->
+
+    <div id="accessibilityScreen" class="hideMe">
+        <div class="row">
+            <div class="col1" id="accessibilityChoice">
+                <div class="radio" id="sizeChoice" onmouseover="sizeInfo()" onmouseout="clearInfo()">
+                    <input type="radio" name="size" id="normalSize" value="normal" onchange="swapStyleSheet('CSS/stylesheet.css')" checked="checked">
+                    <label id="normalSized" for="normalSize">Normal</label>
+    
+                    <input type="radio" name="size" id="largeSize" value="large" onchange="swapStyleSheet('CSS/stylesheetLarge.css')">
+                    <label id="largeSized" for="largeSize">Large</label>
+
+                    <input type="radio" name="size" id="hugeSize" value="huge" onchange="swapStyleSheet('CSS/stylesheetHuge.css')">
+                    <label id="hugeSized" for="hugeSize">Huge</label>
+                    <br><br>
+                </div>
+                <div id="languageChoice" onmouseover="languageInfo()" onmouseout="clearInfo()">
+                    <select name="language" id="language" onchange="changeLanguage()">
+                        <option id="englishText" value="English" selected>English</option>
+                        <option id="spanishText" value="Spanish">Spanish</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col2" id="accessibilityDescription">
+                hello hello
+            </div>
+        </div>
+        <div id="returnStartScreen">
+            <button id="backButton" onclick="accessBackButton()">Back</button>
+        </div>
+    </div>
+
+    <!-- Declare Avatar Details Screen -->
+
+    <div id="avatarDetails" class="hideMe">
+        <div id="avatarTitle">
+            Avatar Details
+        </div>
+        <div id="characterSelect">
+            <!-- Choose Name -->
+            <label id="characterNamed" for="characterName"><u>Character Name</u></label><br>
+            <input type="text" name="characterName" id="characterName">
+            <br><br>
+
+            <!-- Choose Gender -->
+            <label id="genderText"><u>Gender</u></label>
+            <br>
+            <div class="radio">
+                <input type="radio" name="gender" id="male" value="Male">
+                <label id="maleG" for="male">Male</label>
+
+                <input type="radio" name="gender" id="female" value="Female">
+                <label id="femaleG" for="female">Female</label>
+                <br><br>
+            </div>
+
+            <!-- Set Difficulty -->
+            <label id="mDifficulty" for="difficulty"><u>Maze Difficulty</u></label><br>
+            <select name="difficulty" id="difficulty">
+                <option id="easyDiff" value="Easy">Easy</option>
+                <option id="mediumDiff" value="Medium">Medium</option>
+                <option id="hardDiff" value="Hard">Hard</option>
+            </select>
+            <br><br>
+
         </div>
 
         <div id="avatarButton">
@@ -91,12 +161,21 @@
 
         <!-- Story Box -->
         <div id="storybox">
+
+            <!-- Text -->
             <p id="storyText">The story text would go <b>here</b> maybe. Although this isn't a lot of space so maybe we
                 should put it on the side? Anyway I like <b>this method</b> of making text bold</p>
-            <div class="storybox-bottom">
-                <img style="float: left; padding: 2px 0px 0px 7px;" src="images/primitive-torch.png"
-                    alt="Image of a torch" height="25px">
-                <p style="float: left; font-size: 21px; padding-left: 29px;" id="torchStrength">x4</p>
+
+
+            <!-- Torch and hearts-->
+            <div class="storybox-bottom" style="top: 15px">
+                <img style="float:left; width:40px; height:40px;" src="images/torch.png" alt="Image of a torch">
+                <p style="float: left; font-size: 21px; padding-left: 29px;" id="torchStrength"></p>
+                <div id="hearts" style="position: relative; bottom: 13px">
+                    <div id="live" class="lifeHeart"></div>
+                    <div id="live1" class="lifeHeart"></div>
+                    <div id="live2" class="lifeHeart"></div>
+                </div>
             </div>
         </div>
         </br>
@@ -104,16 +183,82 @@
         <!-- Game Board -->
         <div id="board">
             <canvas id="gameCanvas" width="610" height="610"></canvas>
-            <script src="main.js"></script>
+            <script src="Javascript/main.js"></script>
         </div>
 
+        <!-- Pressure Plate Challenge - hidden until challenge activated -->
+        <div id="pressurepVisualiser" class="hideMe">
+            <img src="images\plates_challenge.png" alt="Plates Challenge" />
+            <div id="pressurePButtons">
+                <button id="showGameDisplay" onclick="enterChallenge()">Enter Pressure Plate Puzzle</button>
+                <button id="skipPressurePChal" onclick="skipPlateChallenge()">Skip</button><br>
+            </div>
+
+        </div>
+        <div id="game-container-1" class="game-container" style="display: none;">
+            <div id="map-and-controls">
+                <!-- Pressure Plate game map -->
+                <div id="game-map-1" class="game-map">
+
+                    <div id="tiles" class="layer"></div>
+                    <div id="sprites" class="layer"></div>
+
+                    <div id="success-msg">Goal Reached</div>
+                </div>
+                <!-- end game map -->
+            </div>
+
+            <!-- Pressure Plate Game Controls -->
+            <div id="controls">
+                <button id="upMaze"></button>
+                <div id="horiz">
+                    <button id="leftMaze"></button>
+                    <button id="downMaze"></button>
+                    <button id="rightMaze"></button>
+                </div>
+            </div>
+            <script src="Javascript/mazeScript-RC.js"></script>
+        </div>
+
+        <!-- Random room challenge -->
+        <div id="startRoomVisualiser" style="display: none;">
+            <img src="images\pit.png" alt="Plates Challenge" />
+        </div>
+        <div id="roomTextChoice" style="display: none;">
+            <div id="roomTextStyle">
+                <input type="text" name="decision" id="decision">
+                <button id="submitChoice" onclick="submitChoice()">Enter</button><br>
+                <button class="choice" id="choice1" onclick="choice1()">Search</button>
+                <button class="choice" id="choice2" onclick="choice2()">Investigate</button>
+                <br>
+                <button class="choice" id="choice3" onclick="choice3()">N/A</button>
+                <button class="choice" id="choice4" onclick="choice4()">N/A</button>
+            </div>
+
+        </div>
+
+
         <!-- Buttons -->
-        <div id="buttons">
-            <input onclick="buttonUp()" type="button" value="up" id="up" /></br>
+        <div id = 'buttons' style="width: 610px; margin:10px auto 200px;">
+            <input onclick="buttonUp()" type="button" value="up" id="up" />
             <input onclick="buttonLeft()" type="button" value="left" id="left" />
             <input onclick="buttonDown()" type="button" value="down" id="down" />
             <input onclick="buttonRight()" type="button" value="right" id="right" />
         </div>
+
+        <!-- Spider Challenge  -->
+        <div id="spiderChallengeDiv" class="hideMe"></div>
+
+        <!-- Spider Challenge Controls-->
+        <div style="width: 610px; margin:10px auto;">
+            <button id="Spider1" class="hideMe">Button1</button>
+            <button id="Spider2" class="hideMe">Button2</button>
+            <button id="Spider3" class="hideMe">Button3</button>
+            <button id="Spider4" class="hideMe">Button4</button>
+
+        </div>
+
+        <button id="roomblehbleh" onclick="startRoomChal()">Enter Room Puzzle</button>
     </div>
 
     </div>
@@ -122,19 +267,44 @@
 
     <div id="endScreen" class="hideMe">
         <div id="avatarTitle">
-            GAME OVER
+            <p id="GameOverText"></p>
         </div>
         <div id="characterSelect">
 
-            <div id="timer">
-                Time Left: <span id="minutes">00</span>:<span id="seconds">00</span>
-            </div>
+            <div>
+                <span id="livesLeftStat1" class="lifeHeart"></span><span id="livesLeftStat2"
+                    class="lifeHeart"></span><span id="livesLeftStat3" class="lifeHeart"></span>
+            </div><br>
 
-            <br><br>
+            <!-- End game stats -->
+            <table id="statCard">
+                <tbody>
+                    <th colspan="2">Stats</th>
+                    <!-- Time -->
+                    <tr>
+                        <td> Time Left </td>
+                        <td> <span id="minutesLeft">00</span>:<span id="secondsLeft">00</span> </td>
+                    </tr>
+                    <!-- Distance -->
+                    <tr>
+                        <td> Distance Moved </td>
+                        <td> <span id="distanceTravelledStat"></span> </td>
+                    </tr>
+                    <!-- Challenges -->
+                    <tr>
+                        <td> Challenges Encountered</td>
+                        <td> <span id="challengesComp"></span> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Credits -->
+            <h6>Created by Ruari Craig, Charlie McClements, Charlie Ogilby, James McAlea<br>Music by Kevin MacLeod,
+                incompetech.com; sound effects created with sfxr.me<br><br>Thanks for playing!</h6>
+            <input onclick="resetGame()" type="button" value="Continue" id="reset" />
         </div>
     </div>
 
-    <input onclick="startChallenge1()" type="button" value="challenge1" id="temp">
+
 </body>
 
 </html>

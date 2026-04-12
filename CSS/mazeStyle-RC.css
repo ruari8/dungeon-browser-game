@@ -1,0 +1,200 @@
+body {
+    transition: 0.2s ease;
+}
+body.success {
+    /* background-color: #b7f0b7; */
+    transition: 0.2s ease;
+}
+
+
+/* Room Challenge */
+#startRoomVisualiser img {
+    display: block;
+    max-width: 610px;
+    height: 610px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#roomTextStyle {
+    padding: 20px;
+    text-align: center;
+    border: 2px #930C10 solid;
+    width: 60%;
+    margin: auto;
+}
+
+#roomTextChoice input[type=text] {
+    border: 2px solid #930C10;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px, 10px, 80px;
+    width: 50%;
+    font-size: 300%;
+    font-family: monospace;
+    background-color: #90ee90;
+}
+#roomTextChoice input[type=text]:focus {
+    border: 4px solid #930C10;
+    background-color: lightblue;
+}
+
+.choice{
+    padding: 10px;
+    margin: 10px;
+    font-size: 300%;
+    font-weight: bold;
+    background-color: #FFFEBD;
+    color: rgb(83, 83, 83);
+    border: 4px #930C10 solid;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Maze Visualiser Styling */
+#pressurepVisualiser img {
+    display: block;
+    max-width: 610px;
+    height: 610px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pressurePButtons button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 250%;
+    font-weight: bold;
+    background-color: #FFFEBD;
+    color: rgb(83, 83, 83);
+    border: 4px #930C10 solid;
+    border-radius: 15px;
+    text-align: center; 
+    position: relative;                             
+    cursor: pointer;
+}
+#pressurePButtons button:hover {
+    background-color: rgb(255, 187, 187);
+}
+
+/* Maze Styling */
+.game-container {
+    margin: 0px auto;
+}
+#map-and-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#controls {
+    margin-left: 10px;
+    text-align: center;
+    position: relative;
+}
+#controls button {
+    padding: 10px 10px;
+    width: 38px;
+    height: 38px;
+    margin-top: 10px;
+    background-color: #DDD;
+    border: 1px solid #000;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+#controls button::before {
+    content: '';
+    width: 0px;
+    position: absolute;
+}
+button#leftMaze::before {
+    border-top: 10px solid transparent;
+    border-right: 15px solid #000;
+    border-bottom: 10px solid transparent;
+    left: 10px;
+    top: 9px;
+}
+button#rightMaze::before {
+    border-top: 10px solid transparent;
+    border-left: 15px solid #000;
+    border-bottom: 10px solid transparent;
+    left: 12px;
+    top: 9px;
+}
+button#upMaze::before {
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 15px solid #000;
+    left: 9px;
+    top: 9px;
+}
+button#downMaze::before {
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 15px solid #000;
+    left: 9px;
+    top: 12px;
+}
+#controls #horiz {
+    align-items: center;
+}
+button #leftMaze {
+    margin-right: 5px;
+}
+button #downMaze {
+    margin-right: 25px;
+}
+button #rightMaze {
+    margin-left: 5px;
+}
+.game-map {
+    position: relative;
+    margin: 0px auto;
+}
+div.layer,
+div.layer div {
+    position: absolute;
+    /* position relative to game map */
+}
+/* gives a grid like appearance */
+#tiles div {
+    border: 1px solid grey;
+}
+.default .floor {
+    background-color: lightgrey;
+}
+.default .wall {
+    background-color: lightgrey;
+}
+/* player and goal slightly smaller than tiles */
+.player, 
+.goal {
+    transform-origin: center;
+    transform:scale(0.85);
+}
+/* color of player and goal */
+.player {
+    background-color: #90ee90;
+    border: 1px solid green;
+    transition: left 0.2s linear, top 0.2s linear;
+  }  
+.goal {
+    background-color: #FFD700;
+    border: 1px solid #98720b;
+}
+/* success msg */
+#success-msg {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    padding: 5px 5px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    width: calc(100% - 8px);
+}
+/* make success msg visible when body has the success class */
+body.success #success-msg {
+    opacity: 1;
+    transition: opacity 0.2 ease;
+} 
