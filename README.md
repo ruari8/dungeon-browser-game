@@ -1,34 +1,76 @@
-# Dungeon Browser Game
+# Oubliette - Dungeon Browser Game
 
-A browser-based dungeon adventure game built with vanilla HTML, CSS, and JavaScript. Group project for CSC1030 Web Technologies at Queen's University Belfast.
+Year 1 group project for CSC1030 Web Technologies at Queen's University Belfast. Oubliette is a small browser dungeon game built with HTML, CSS, vanilla JavaScript, jQuery, canvas, local media assets, and sound effects.
+
+The project is intentionally simple: no build step, no framework, and no backend. It is a useful snapshot of early frontend work, game state management, canvas drawing, DOM interaction, and group-project integration.
+
+## At a glance
+
+| Area | Details |
+| --- | --- |
+| Project type | Browser game coursework |
+| Stack | HTML, CSS, JavaScript, jQuery |
+| Entry point | `index.html` |
+| Build step | None |
+| Tests | None |
+| Main contribution | Maze engine, maze styling, timer/lives/game-flow code |
 
 ## Gameplay
 
-The player navigates through a dungeon with multiple rooms, each containing a different challenge they must overcome to progress. Failing a challenge costs a life — run out of lives and it's game over.
+The player creates a character, chooses a maze difficulty, and moves through a dungeon before the timer expires. Along the way, the game presents room-specific challenges. Failing challenges can reduce lives; reaching the maze exit wins the game.
 
-**Rooms & Challenges:**
-- **Prologue** — story introduction with animated candle ambience
-- **Maze** — navigate a procedurally structured grid maze
-- **Riddle** — answer riddles correctly to advance
-- **Pressure Plates** — solve a pressure plate puzzle
-- **Spider Encounter** — a chance-based encounter
-- **Button Challenge** — a reflex/memory challenge
+Implemented pieces include:
 
-## Features
+- Start, customisation, avatar, and accessibility screens
+- Keyboard and button movement
+- Difficulty-based maze generation
+- Timer and torch-strength countdown
+- Lives display
+- Prologue sequence
+- Riddle, pressure plate, spider, and button-style challenges
+- Local music and sound effects
+- English and Spanish UI text toggle
 
-- Dungeon sprite assets with animated tile rendering
-- Background music and sound effects (hover, click, damage, victory)
-- Lives system — multiple chances per challenge
-- Responsive room transitions
+## Running locally
 
-## Tech Stack
+The simplest option is to open `index.html` in a modern browser.
 
-HTML5 · CSS3 · Vanilla JavaScript · jQuery
+For more consistent media loading, serve the folder with a small static server:
 
-## Running
+```bash
+python3 -m http.server 8000
+```
 
-Open `index.html` in any modern browser — no build step required.
+Then open:
+
+```text
+http://localhost:8000
+```
+
+## Repository structure
+
+```text
+index.html                Main page and screen layout
+CSS/                      Main styling, larger text modes, tooltips, maze styling
+Javascript/main.js        Canvas maze generation and movement
+Javascript/ruari.js       Timer, menu flow, language toggle, difficulty setup
+Javascript/mazeScript-RC.js
+                          Pressure-plate maze challenge logic
+Javascript/*.js           Other group challenge scripts
+images/                   Sprites, challenge art, hearts, torch assets
+sfx/                      Music and sound effects
+video/                    Candle video used on the start screen
+```
+
+## Controls
+
+- Arrow keys move the player in the main maze.
+- On-screen buttons provide the same movement controls.
+- Challenge screens use their own buttons or text inputs.
 
 ## Notes
 
-This was a Year 1 group project. My contributions included the maze engine (`mazeScript-RC.js`, `CSS/mazeStyle-RC.css`) and core game logic (`Javascript/ruari.js`).
+- This was a group project, so scripts are split by contributor and style varies.
+- Some media paths in the HTML use Windows-style separators, which browsers usually tolerate but may behave differently across environments.
+- There is no automated test suite; verification is manual by loading the game and playing through the rooms.
+- Image credits present in the repo list group-created art assets for the torch, hearts, and challenge images.
